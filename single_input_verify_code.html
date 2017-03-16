@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+        <title>单框逐一输入验证码</title>
+
+        <style>
+            body {
+                font-family: "Microsoft YaHei";
+                padding: 0;
+                margin: 0;
+            }
+            
+            .sweet-overlay {
+                position: fixed;
+                opacity: 1.02;
+                left: 0;
+                right: 0;
+                top: 0;
+                bottom: 0;
+                background-color: rgba(0, 0, 0, 0.3);
+            }
+            
+            .sweet-alert {
+                background-color: white;
+                font-family: 'Microsoft Yahei';
+                width: 300px;
+                height: 200px;
+                padding: 20px 0;
+                border-radius: 5px;
+                /*text-align: center;*/
+                position: fixed;
+                left: 50%;
+                top: 50%;
+                margin-left: -150px;
+                margin-top: -130px;
+                overflow: hidden;
+                /*display: none;*/
+                z-index: 2000;
+            }
+            
+            .sweet-yzm {
+                width: 220px;
+                margin: 0 auto;
+            }
+            
+            .input-yzm input {
+                width: 35px;
+                height: 35px;
+                text-align: center;
+                margin-top: 20px;
+            }
+            
+            .input-yzm input:hover {
+                border: 1px solid #587d18 !important;
+            }
+            
+            .input-juli {
+                margin-right: 10px;
+            }
+        </style>
+        <script>
+        </script>
+    </head>
+
+    <body>
+        <div class="sweet-overlay" style="display: block;">
+
+        </div>
+        <div class="sweet-alert">
+            <div class="sweet-yzm">
+                <div style="font-size: 16px;color: #333333;text-align: center;">请输入一下图形中的字母</div>
+                <div style="width: 220px;height: 50px;background: greenyellow;margin: 20px auto;overflow: hidden;">
+
+                </div>
+                <div style="text-align: right;margin-top: -10px;">
+                    <a style=" color: #8f8f8f" href="#">看不清？换一张</a>
+                </div>
+                <form class="input-yzm">
+                    <input type="text" name="" id="" value="" maxlength="1" class="input-juli inputw" />
+                    <input type="text" name="" id="" value="" maxlength="1" class="input-juli inputw" />
+                    <input type="text" name="" id="" value="" maxlength="1" class="input-juli inputw" />
+                    <input type="text" name="" id="" value="" maxlength="1"  class="inputw"/>
+                </form>
+            </div>
+        </div>
+        <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script>
+            $('.inputw').on('keyup', function(event) {
+		    if ($(this).val() != ''){    
+		        // 如果不为空
+		        $(this).next('input').focus();                    
+		    }            
+		});
+		
+		$('.inputw').on('keydown', function(event) {
+		    var evt =  event || window.event;
+		
+		    if ($(this).val() == '' && evt.keyCode == 8){
+		        // 如果为空且按下退回键
+		        $(this).prev('input').focus();                    
+		    }                
+		});
+        </script>
+    </body>
+
+</html>
